@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection Auto Patcher</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        textarea { width: 100%; height: 200px; }
+        .container { width: 80%; margin: auto; }
+        h1 { text-align: center; }
+        .form-group { margin-bottom: 20px; }
+        button { padding: 10px 20px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SQL Injection Auto Patcher</h1>
+        
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Upload a Python File (.py)</label>
+                <input type="file" name="file" id="file" required>
+            </div>
+            <button type="submit">Upload & Patch</button>
+        </form>
+
+        {% if original_code %}
+        <h2>Original Code</h2>
+        <textarea readonly>{{ original_code }}</textarea>
+        {% endif %}
+
+        {% if patched_code %}
+        <h2>Patched Code</h2>
+        <textarea readonly>{{ patched_code }}</textarea>
+        <br>
+        <a href="{{ patched_file_path }}" download>Download Patched File</a>
+        {% endif %}
+    </div>
+</body>
+</html>
